@@ -12,6 +12,7 @@ interface LoaderProps {
 const Loader = ({ onComplete }: LoaderProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
+    const logoRef = useRef<SVGSVGElement>(null);
     const progressRef = useRef<HTMLDivElement>(null);
     const barRef = useRef<HTMLDivElement>(null);
 
@@ -28,21 +29,44 @@ const Loader = ({ onComplete }: LoaderProps) => {
                 }
             });
 
+            // Logo Animations
+            const logoPaths = logoRef.current?.querySelectorAll('path, rect');
+            if (logoPaths) {
+                gsap.set(logoPaths, { strokeDasharray: 100, strokeDashoffset: 100 });
+                tl.to(logoPaths, {
+                    strokeDashoffset: 0,
+                    duration: 1.5,
+                    stagger: 0.2,
+                    ease: 'power2.inOut'
+                }, 0);
+            }
+
+            // Continuous pulse for the logo
+            gsap.to(logoRef.current, {
+                scale: 1.1,
+                opacity: 0.8,
+                duration: 0.8,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut'
+            });
+
             // Split text animation effect
             tl.fromTo(textRef.current,
                 { y: 50, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+                { y: 0, opacity: 1, duration: 1, ease: 'power3.out' },
+                0.5
             );
 
             // Progress bar animation
             tl.fromTo(barRef.current,
                 { scaleX: 0 },
-                { scaleX: 1, duration: 1.5, ease: 'power1.inOut' },
-                '-=0.5'
+                { scaleX: 1, duration: 2, ease: 'power1.inOut' },
+                0.2
             );
 
             // Fade out progress and text before sliding up
-            tl.to([textRef.current, progressRef.current], {
+            tl.to([textRef.current, logoRef.current, progressRef.current], {
                 opacity: 0,
                 y: -20,
                 duration: 0.4,
@@ -96,16 +120,19 @@ const Loader = ({ onComplete }: LoaderProps) => {
                 >
                     EC
                 </Typography>
-                <Box
-                    component="img"
-                    src={pcIcon}
-                    alt="PC Logo"
-                    sx={{
-                        width: 40,
-                        height: 40,
-                        filter: 'brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(220deg)' // Primary hue filter
-                    }}
-                />
+                <svg
+                    ref={logoRef}
+                    width="45"
+                    height="45"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{ filter: 'drop-shadow(0 0 8px rgba(99, 102, 241, 0.5))' }}
+                >
+                    <path d="M12 21L12 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <rect x="3" y="4" width="18" height="13" rx="1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M9 21H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
             </Box>
 
             <Box

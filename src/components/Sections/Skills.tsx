@@ -32,28 +32,50 @@ const skillCategories = [
 ];
 
 const Skills = () => {
+    const sectionRef = useRef(null);
+    const headerRef = useRef(null);
     const cardsRef = useRef<HTMLDivElement[]>([]);
 
     useEffect(() => {
-        gsap.fromTo(cardsRef.current,
-            { opacity: 0, y: 30 },
-            {
-                opacity: 1,
-                y: 0,
-                stagger: 0.1,
-                duration: 0.8,
-                scrollTrigger: {
-                    trigger: '#skills',
-                    start: 'top 80%',
+        const ctx = gsap.context(() => {
+            // Header animation
+            gsap.fromTo(headerRef.current,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 80%',
+                        toggleActions: 'restart reverse restart reverse'
+                    }
                 }
-            }
-        );
+            );
+
+            gsap.fromTo(cardsRef.current,
+                { opacity: 0, x: 100 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    stagger: 0.15,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 70%',
+                        toggleActions: 'restart reverse restart reverse'
+                    }
+                }
+            );
+        }, sectionRef);
+
+        return () => ctx.revert();
     }, []);
 
     return (
-        <Box id="skills" sx={{ bgcolor: 'background.default' }}>
+        <Box id="skills" ref={sectionRef} sx={{ bgcolor: 'background.default', py: { xs: 10, md: 15 } }}>
             <Container maxWidth="lg">
-                <Box sx={{ mb: 6, textAlign: 'center' }}>
+                <Box ref={headerRef} sx={{ mb: 8, textAlign: 'center' }}>
                     <Typography variant="overline" color="primary" sx={{ fontWeight: 700 }}>
                         ESPECIALIDADES
                     </Typography>

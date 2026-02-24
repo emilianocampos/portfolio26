@@ -31,7 +31,7 @@ const technologies = [
     { name: 'NODE.JS', icon: <FaNodeJs />, color: '#339933' },
     { name: 'SQL', icon: <SiPostgresql />, color: '#4169E1' },
     { name: 'UNITY', icon: <SiUnity />, color: '#FFFFFF' },
-    { name: 'CAPCUT', icon: <FaVideo />, color: '#000000' },
+    { name: 'CAPCUT', icon: <FaVideo />, color: '#cdff57ff' },
     { name: 'PHOTOSHOP', icon: <SiAdobephotoshop />, color: '#31A8FF' },
 ];
 
@@ -44,6 +44,7 @@ const Hero = () => {
     const bgElementsRef = useRef<HTMLDivElement[]>([]);
     const carouselRef = useRef(null);
     const carouselTrackRef = useRef<HTMLDivElement>(null);
+    const loopTextRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -107,6 +108,39 @@ const Hero = () => {
                     { opacity: 1, y: 0, duration: 1, delay: 1.5 }
                 );
             }
+
+            // Text Loop Animation
+            if (loopTextRef.current) {
+                const phrases = [
+                    { part1: 'Transformo ideas en', part2: 'experiencias.' },
+                    { part1: 'Diseño pensado', part2: 'para vender.' }
+                ];
+                let currentIndex = 0;
+                const part1El = loopTextRef.current.querySelector('.part1');
+                const part2El = loopTextRef.current.querySelector('.part2');
+
+                const upTL = gsap.timeline({ repeat: -1 });
+
+                const updateText = () => {
+                    currentIndex = (currentIndex + 1) % phrases.length;
+                    if (part1El) part1El.textContent = phrases[currentIndex].part1;
+                    if (part2El) part2El.textContent = phrases[currentIndex].part2;
+                };
+
+                upTL.to(loopTextRef.current, {
+                    opacity: 0,
+                    y: -20,
+                    duration: 0.5,
+                    delay: 2.5,
+                    onComplete: updateText
+                })
+                    .set(loopTextRef.current, { y: 20 })
+                    .to(loopTextRef.current, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.5
+                    });
+            }
         }, rootRef);
 
         return () => ctx.revert();
@@ -124,7 +158,7 @@ const Hero = () => {
                 overflow: 'hidden',
                 pt: { xs: 15, md: 0 },
                 pb: { xs: 8, md: 0 },
-                mt: 13
+                mt: { xs: 2, md: 14 },
             }}
         >
             {/* Background Orbs */}
@@ -146,30 +180,48 @@ const Hero = () => {
             <Container maxWidth="lg">
                 <Grid container spacing={6} alignItems="center">
                     {/* Left Side: Text & Actions */}
-                    <Grid size={{ xs: 12, md: 7 }} order={{ xs: 2, md: 1 }}>
+
+                    <Grid size={{ xs: 12, md: 7 }}>
                         <Stack spacing={4}>
                             <Box ref={titleRef}>
                                 <Typography
                                     variant="h1"
                                     sx={{
-                                        fontSize: { xs: '3rem', md: '4rem' },
+                                        fontSize: { xs: '3rem', md: '3rem' },
                                         lineHeight: 1.1,
                                         mb: 2,
                                         textAlign: { xs: 'center', md: 'left' }
                                     }}
                                 >
-                                    Hola, soy <br />
-                                    <Box
-                                        component="span"
-                                        sx={{
-                                            background: (theme) => `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                                            WebkitBackgroundClip: 'text',
-                                            WebkitTextFillColor: 'transparent',
-                                            display: 'inline-block',
-                                            fontWeight: 900
-                                        }}
-                                    >
-                                        Emiliano
+                                    Hola, soy Emiliano Campos. <br />
+                                    <Box ref={loopTextRef}>
+                                        <Box
+                                            component="span"
+                                            className="part1"
+                                            sx={{
+                                                color: 'text.secondary',
+                                                display: 'block',
+                                                fontSize: { xs: '0.8em', md: '0.85em' },
+                                                opacity: 0.8,
+                                                fontWeight: 700,
+                                                mt: 1
+                                            }}
+                                        >
+                                            Transformo ideas en
+                                        </Box>
+                                        <Box
+                                            component="span"
+                                            className="part2"
+                                            sx={{
+                                                background: (theme) => `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                                                WebkitBackgroundClip: 'text',
+                                                WebkitTextFillColor: 'transparent',
+                                                display: 'inline-block',
+                                                fontWeight: 900
+                                            }}
+                                        >
+                                            experiencias.
+                                        </Box>
                                     </Box>
                                 </Typography>
                             </Box>
@@ -186,7 +238,7 @@ const Hero = () => {
                                         mx: { xs: 'auto', md: 0 }
                                     }}
                                 >
-                                    Transformo ideas en experiencias digitales profesionales, optimizadas y listas para convertir visitas en clientes.
+                                    Creo páginas web que se ven profesionales, funcionan perfecto en celular y convierten visitas en clientes.
                                 </Typography>
                             </Box>
 
@@ -217,7 +269,7 @@ const Hero = () => {
                     </Grid>
 
                     {/* Right Side: Code Animation */}
-                    <Grid size={{ xs: 12, md: 5 }} order={{ xs: 1, md: 2 }}>
+                    <Grid size={{ xs: 12, md: 5 }}>
                         <Box
                             ref={imageRef}
                             sx={{
@@ -247,6 +299,9 @@ const Hero = () => {
                             <CodeAnimation />
                         </Box>
                     </Grid>
+
+                    {/* Right Side: Code Animation */}
+
                 </Grid>
 
                 {/* Tech Carousel Area */}

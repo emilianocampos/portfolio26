@@ -19,24 +19,44 @@ const education = [
 
 const Education = () => {
     const sectionRef = useRef(null);
+    const headerRef = useRef(null);
 
     useEffect(() => {
-        gsap.from('.edu-item', {
-            opacity: 0,
-            y: 30,
-            stagger: 0.3,
-            duration: 1,
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top 80%',
-            }
-        });
+        const ctx = gsap.context(() => {
+            // Header animation
+            gsap.fromTo(headerRef.current,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 85%',
+                        toggleActions: 'restart reverse restart reverse'
+                    }
+                }
+            );
+
+            gsap.from('.edu-item', {
+                opacity: 0,
+                y: 60,
+                stagger: 0.3,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 75%',
+                    toggleActions: 'restart reverse restart reverse'
+                }
+            });
+        }, sectionRef);
+        return () => ctx.revert();
     }, []);
 
     return (
-        <Box id="education" ref={sectionRef} sx={{ py: 10, bgcolor: 'background.default' }}>
+        <Box id="education" ref={sectionRef} sx={{ py: { xs: 10, md: 15 }, bgcolor: 'background.default' }}>
             <Container maxWidth="md">
-                <Box sx={{ mb: 6, textAlign: 'center' }}>
+                <Box ref={headerRef} sx={{ mb: 8, textAlign: 'center' }}>
                     <Typography variant="overline" color="primary" sx={{ fontWeight: 700 }}>
                         FORMACIÓN
                     </Typography>

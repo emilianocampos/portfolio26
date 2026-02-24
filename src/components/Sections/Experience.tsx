@@ -25,17 +25,34 @@ const experiences = [
 
 const Experience = () => {
     const containerRef = useRef(null);
+    const headerRef = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Header animation
+            gsap.fromTo(headerRef.current,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: 'top 85%',
+                        toggleActions: 'restart reverse restart reverse'
+                    }
+                }
+            );
+
             gsap.from('.exp-item', {
                 opacity: 0,
-                x: -50,
+                y: 50,
                 stagger: 0.2,
                 duration: 1,
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 80%',
+                    start: 'top 75%',
+                    toggleActions: 'restart reverse restart reverse'
                 }
             });
         }, containerRef);
@@ -43,9 +60,9 @@ const Experience = () => {
     }, []);
 
     return (
-        <Box id="experience" ref={containerRef} sx={{ position: 'relative' }}>
+        <Box id="experience" ref={containerRef} sx={{ position: 'relative', py: { xs: 10, md: 15 } }}>
             <Container maxWidth="md">
-                <Box sx={{ mb: 8, textAlign: 'center' }}>
+                <Box ref={headerRef} sx={{ mb: 8, textAlign: 'center' }}>
                     <Typography variant="overline" color="primary" sx={{ fontWeight: 700 }}>
                         TRAYECTORIA
                     </Typography>

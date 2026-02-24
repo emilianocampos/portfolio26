@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
+import pcIcon from '../../assets/pc.svg';
 
 const navItems = [
     { label: 'Sobre mí', id: 'about' },
@@ -49,19 +50,33 @@ const Navbar = () => {
             >
                 <Container maxWidth="lg">
                     <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-                        <Typography
-                            variant="h6"
-                            sx={{
-                                fontWeight: 800,
-                                background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
-                                cursor: 'pointer',
-                            }}
-                            onClick={() => window.scrollTo(0, 0)}
+                        <Box
+                            sx={{ display: 'flex', alignItems: 'center', gap: 1, cursor: 'pointer' }}
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                         >
-                            EC
-                        </Typography>
+                            <Typography
+                                variant="h6"
+                                sx={{
+                                    fontWeight: 800,
+                                    background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                }}
+                            >
+                                EC
+                            </Typography>
+                            <Box
+                                component="img"
+                                src={pcIcon}
+                                alt="PC Logo"
+                                sx={{
+                                    width: 24,
+                                    height: 24,
+                                    filter: theme.palette.mode === 'dark' ? 'invert(1)' : 'none',
+                                    opacity: 0.9
+                                }}
+                            />
+                        </Box>
 
                         {/* Desktop Menu */}
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>

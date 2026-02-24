@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Box } from '@mui/material';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Layout/Navbar';
 import Hero from './components/Sections/Hero';
 import About from './components/Sections/About';
@@ -10,6 +12,8 @@ import Education from './components/Sections/Education';
 import Contact from './components/Sections/Contact';
 import Footer from './components/Layout/Footer';
 import Loader from './components/Common/Loader';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

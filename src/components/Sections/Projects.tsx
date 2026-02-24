@@ -27,25 +27,47 @@ const projects = [
 ];
 
 const Projects = () => {
+    const sectionRef = useRef(null);
+    const headerRef = useRef(null);
     const gridRef = useRef(null);
 
     useEffect(() => {
-        gsap.from('.project-card', {
-            opacity: 0,
-            scale: 0.9,
-            stagger: 0.2,
-            duration: 0.8,
-            scrollTrigger: {
-                trigger: gridRef.current,
-                start: 'top 80%',
-            }
-        });
+        const ctx = gsap.context(() => {
+            // Header animation
+            gsap.fromTo(headerRef.current,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 85%',
+                        toggleActions: 'restart reverse restart reverse'
+                    }
+                }
+            );
+
+            gsap.from('.project-card', {
+                opacity: 0,
+                scale: 0.8,
+                filter: 'blur(10px)',
+                stagger: 0.2,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: gridRef.current,
+                    start: 'top 75%',
+                    toggleActions: 'restart reverse restart reverse'
+                }
+            });
+        }, sectionRef);
+        return () => ctx.revert();
     }, []);
 
     return (
-        <Box id="projects" sx={{ py: 10 }}>
+        <Box id="projects" ref={sectionRef} sx={{ py: { xs: 10, md: 15 } }}>
             <Container maxWidth="lg">
-                <Box sx={{ mb: 8, textAlign: 'center' }}>
+                <Box ref={headerRef} sx={{ mb: 8, textAlign: 'center' }}>
                     <Typography variant="overline" color="primary" sx={{ fontWeight: 700 }}>
                         PORTFOLIO
                     </Typography>
