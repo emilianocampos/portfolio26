@@ -1,0 +1,41 @@
+.loader-container {
+    cursor: wait;
+}
+
+.loader-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.orb-1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+    top: -150px;
+    right: -150px;
+    animation: pulse 4s infinite alternate ease-in-out;
+}
+
+.orb-2 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(244, 63, 94, 0.15) 0%, transparent 70%);
+    bottom: -125px;
+    left: -125px;
+    animation: pulse 5s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scale(1.2) translate(20px, 20px);
+        opacity: 0.6;
+    }
+}
