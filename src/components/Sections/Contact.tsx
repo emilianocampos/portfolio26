@@ -21,7 +21,8 @@ const Contact = () => {
                         trigger: ctaRef.current,
                         start: 'top 90%',
                         toggleActions: 'restart reverse restart reverse'
-                    }
+                    },
+                    force3D: true
                 }
             );
 
@@ -36,7 +37,8 @@ const Contact = () => {
                         trigger: formTitleRef.current,
                         start: 'top 95%',
                         toggleActions: 'restart reverse restart reverse'
-                    }
+                    },
+                    force3D: true
                 }
             );
 
@@ -51,7 +53,8 @@ const Contact = () => {
                         trigger: formRef.current,
                         start: 'top 90%',
                         toggleActions: 'restart reverse restart reverse'
-                    }
+                    },
+                    force3D: true
                 }
             );
         }, sectionRef);
@@ -65,6 +68,7 @@ const Contact = () => {
             <Container maxWidth="lg" sx={{ mb: 10 }}>
                 <Box
                     ref={ctaRef}
+                    className="hw-accel"
                     sx={{
                         textAlign: 'center',
                         bgcolor: 'primary.main',

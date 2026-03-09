@@ -3,7 +3,6 @@ import { Box, Typography } from '@mui/material';
 import gsap from 'gsap';
 import './Loader.css';
 
-import pcIcon from '../../assets/pc.svg';
 
 interface LoaderProps {
     onComplete: () => void;

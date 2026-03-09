@@ -50,10 +50,11 @@ const Projects = () => {
 
             gsap.from('.project-card', {
                 opacity: 0,
-                scale: 0.8,
-                filter: 'blur(10px)',
-                stagger: 0.2,
-                duration: 1,
+                scale: 0.9,
+                filter: 'blur(4px)',
+                stagger: 0.15,
+                duration: 0.8,
+                force3D: true,
                 scrollTrigger: {
                     trigger: gridRef.current,
                     start: 'top 75%',
@@ -78,7 +79,7 @@ const Projects = () => {
 
                 <Grid container spacing={4} ref={gridRef}>
                     {projects.map((project, index) => (
-                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index} className="project-card">
+                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index} className="project-card hw-accel">
                             <Card
                                 sx={{
                                     bgcolor: 'background.paper',

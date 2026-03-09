@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Stack, IconButton, Divider } from '@mui/material';
+import { Box, Container, Typography, Stack, IconButton } from '@mui/material';
 import { GitHub, LinkedIn, Twitter, Instagram } from '@mui/icons-material';
 
 const Footer = () => {

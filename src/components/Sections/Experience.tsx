@@ -40,7 +40,8 @@ const Experience = () => {
                         trigger: containerRef.current,
                         start: 'top 85%',
                         toggleActions: 'restart reverse restart reverse'
-                    }
+                    },
+                    force3D: true
                 }
             );
 
@@ -53,7 +54,8 @@ const Experience = () => {
                     trigger: containerRef.current,
                     start: 'top 75%',
                     toggleActions: 'restart reverse restart reverse'
-                }
+                },
+                force3D: true
             });
         }, containerRef);
         return () => ctx.revert();

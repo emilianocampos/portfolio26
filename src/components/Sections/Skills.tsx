@@ -49,7 +49,8 @@ const Skills = () => {
                         trigger: sectionRef.current,
                         start: 'top 80%',
                         toggleActions: 'restart reverse restart reverse'
-                    }
+                    },
+                    force3D: true
                 }
             );
 
@@ -64,7 +65,8 @@ const Skills = () => {
                         trigger: sectionRef.current,
                         start: 'top 70%',
                         toggleActions: 'restart reverse restart reverse'
-                    }
+                    },
+                    force3D: true
                 }
             );
         }, sectionRef);
@@ -89,6 +91,7 @@ const Skills = () => {
                         <Grid size={{ xs: 12, sm: 6, md: 3 }} key={category.title}>
                             <Card
                                 ref={(el: any) => el && (cardsRef.current[index] = el)}
+                                className="hw-accel"
                                 sx={{
                                     height: '100%',
                                     display: 'flex',

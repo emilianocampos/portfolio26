@@ -56,7 +56,8 @@ const About = () => {
                         trigger: sectionRef.current,
                         start: 'top 70%',
                         toggleActions: 'restart reverse restart reverse'
-                    }
+                    },
+                    force3D: true
                 }
             );
         }, sectionRef);
@@ -69,7 +70,7 @@ const About = () => {
             <Container maxWidth="lg">
                 <Grid container spacing={8} alignItems="center">
                     <Grid size={{ xs: 12 }}>
-                        <Box ref={textRef} sx={{ textAlign: { xs: 'center', md: 'center' }, maxWidth: '900px', mx: 'auto' }}>
+                        <Box ref={textRef} className="hw-accel" sx={{ textAlign: { xs: 'center', md: 'center' }, maxWidth: '900px', mx: 'auto' }}>
                             <Typography variant="overline" color="primary" sx={{ fontWeight: 700, letterSpacing: '0.2em' }}>
                                 MI FILOSOFÍA
                             </Typography>
@@ -88,11 +89,11 @@ const About = () => {
                             </Typography>
 
                             <Stack direction="row" spacing={6} sx={{ justifyContent: 'center', mt: 4 }}>
-                                <Box ref={(el: any) => el && (statsRef.current[0] = el)}>
+                                <Box ref={(el: any) => el && (statsRef.current[0] = el)} className="hw-accel">
                                     <Typography variant="h3" sx={{ fontWeight: 900, color: 'primary.main', mb: 0.5 }}>5+</Typography>
                                     <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 700 }}>Proyectos</Typography>
                                 </Box>
-                                <Box ref={(el: any) => el && (statsRef.current[1] = el)}>
+                                <Box ref={(el: any) => el && (statsRef.current[1] = el)} className="hw-accel">
                                     <Typography variant="h3" sx={{ fontWeight: 900, color: 'primary.main', mb: 0.5 }}>100%</Typography>
                                     <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 700 }}>Compromiso</Typography>
                                 </Box>

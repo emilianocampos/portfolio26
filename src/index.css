@@ -56,3 +56,15 @@ section {
   opacity: 0;
   visibility: hidden;
 }
+
+/* Hardware Acceleration Utilities */
+.hw-accel {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Optimize heavy components */
+.heavy-anim {
+  will-change: transform, opacity, filter;
+}
