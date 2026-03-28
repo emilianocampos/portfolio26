@@ -48,7 +48,7 @@ const Skills = () => {
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         start: 'top 80%',
-                        toggleActions: 'restart reverse restart reverse'
+                        toggleActions: 'play none none reverse'
                     },
                     force3D: true
                 }
@@ -64,7 +64,7 @@ const Skills = () => {
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         start: 'top 70%',
-                        toggleActions: 'restart reverse restart reverse'
+                        toggleActions: 'play none none reverse'
                     },
                     force3D: true
                 }
@@ -97,6 +97,7 @@ const Skills = () => {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     transition: '0.3s',
+                                    willChange: 'transform, border-color, box-shadow',
                                     '&:hover': {
                                         transform: 'translateY(-10px)',
                                         borderColor: 'primary.main',

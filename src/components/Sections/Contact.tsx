@@ -20,7 +20,7 @@ const Contact = () => {
                     scrollTrigger: {
                         trigger: ctaRef.current,
                         start: 'top 90%',
-                        toggleActions: 'restart reverse restart reverse'
+                        toggleActions: 'play none none reverse'
                     },
                     force3D: true
                 }
@@ -36,7 +36,7 @@ const Contact = () => {
                     scrollTrigger: {
                         trigger: formTitleRef.current,
                         start: 'top 95%',
-                        toggleActions: 'restart reverse restart reverse'
+                        toggleActions: 'play none none reverse'
                     },
                     force3D: true
                 }
@@ -52,7 +52,7 @@ const Contact = () => {
                     scrollTrigger: {
                         trigger: formRef.current,
                         start: 'top 90%',
-                        toggleActions: 'restart reverse restart reverse'
+                        toggleActions: 'play none none reverse'
                     },
                     force3D: true
                 }

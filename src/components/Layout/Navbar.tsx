@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import DownloadIcon from '@mui/icons-material/Download';
 import { useTheme } from '@mui/material/styles';
 import pcIcon from '../../assets/pc.svg';
 
@@ -90,9 +91,27 @@ const Navbar = () => {
                                 </Button>
                             ))}
                             <Button
+                                variant="outlined"
+                                href="/emiliano_camposcv_2026.pdf"
+                                download="Emiliano_Campos_CV.pdf"
+                                startIcon={<DownloadIcon />}
+                                size="small"
+                                sx={{ 
+                                    ml: 1, 
+                                    borderColor: 'rgba(255,255,255,0.3)',
+                                    color: 'white',
+                                    '&:hover': {
+                                        borderColor: 'primary.main',
+                                        bgcolor: 'rgba(99, 102, 241, 0.1)'
+                                    }
+                                }}
+                            >
+                                CV
+                            </Button>
+                            <Button
                                 variant="contained"
                                 onClick={() => scrollToSection('contact')}
-                                sx={{ ml: 2 }}
+                                sx={{ ml: 1 }}
                             >
                                 Hablemos
                             </Button>
@@ -158,11 +177,22 @@ const Navbar = () => {
                         ))}
                     </List>
                     <Button
+                        variant="outlined"
+                        fullWidth
+                        size="large"
+                        href="/emiliano_camposcv_2026.pdf"
+                        download="Emiliano_Campos_CV.pdf"
+                        startIcon={<DownloadIcon />}
+                        sx={{ mt: 2, borderColor: 'rgba(255,255,255,0.3)', color: 'white' }}
+                    >
+                        Descargar CV
+                    </Button>
+                    <Button
                         variant="contained"
                         fullWidth
                         size="large"
                         onClick={() => scrollToSection('contact')}
-                        sx={{ mt: 4 }}
+                        sx={{ mt: 2 }}
                     >
                         Hablemos
                     </Button>

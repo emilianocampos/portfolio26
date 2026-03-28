@@ -33,7 +33,7 @@ const Education = () => {
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         start: 'top 85%',
-                        toggleActions: 'restart reverse restart reverse'
+                        toggleActions: 'play none none reverse'
                     },
                     force3D: true
                 }
@@ -47,7 +47,7 @@ const Education = () => {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top 75%',
-                    toggleActions: 'restart reverse restart reverse'
+                    toggleActions: 'play none none reverse'
                 },
                 force3D: true
             });

@@ -39,7 +39,7 @@ const Experience = () => {
                     scrollTrigger: {
                         trigger: containerRef.current,
                         start: 'top 85%',
-                        toggleActions: 'restart reverse restart reverse'
+                        toggleActions: 'play none none reverse'
                     },
                     force3D: true
                 }
@@ -53,7 +53,7 @@ const Experience = () => {
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: 'top 75%',
-                    toggleActions: 'restart reverse restart reverse'
+                    toggleActions: 'play none none reverse'
                 },
                 force3D: true
             });

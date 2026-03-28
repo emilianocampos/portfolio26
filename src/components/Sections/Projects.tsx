@@ -1,28 +1,20 @@
 import { useRef, useEffect } from 'react';
-import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Button, Stack } from '@mui/material';
+import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Button } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import gsap from 'gsap';
 
-const projects = [
+const categories = [
     {
-        title: 'Landing Page Corporativa',
-        category: 'Desarrollo Web / UI / UX',
+        title: 'Páginas Webs',
+        description: 'Sitios web institucionales, landing pages y portfolios optimizados para SEO y conversión.',
         image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
-        description: 'Optimización de conversión y diseño responsive para startup financiera.',
-        tech: ['React', 'MUI', 'GSAP'],
+        path: '/proyectos/paginas-webs',
     },
     {
-        title: 'E-commerce Dashboard',
-        category: 'Web App / Dashboard',
+        title: 'Aplicaciones Webs',
+        description: 'Sistemas complejos, dashboards y plataformas interactivas con lógica de negocio avanzada.',
         image: 'https://images.unsplash.com/photo-1551288049-041440ef415b?auto=format&fit=crop&q=80&w=800',
-        description: 'Interface administrativa con visualización de datos en tiempo real.',
-        tech: ['React', 'Redux', 'Chart.js'],
-    },
-    {
-        title: 'Portfolio Creativo',
-        category: 'Interactive Web',
-        image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800',
-        description: 'Sitio personal con animaciones avanzadas y ScrollTrigger.',
-        tech: ['JavaScript', 'GSAP', 'CSS Grid'],
+        path: '/proyectos/aplicaciones-webs',
     }
 ];
 
@@ -33,7 +25,6 @@ const Projects = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Header animation
             gsap.fromTo(headerRef.current,
                 { opacity: 0, y: 30 },
                 {
@@ -43,22 +34,20 @@ const Projects = () => {
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         start: 'top 85%',
-                        toggleActions: 'restart reverse restart reverse'
+                        toggleActions: 'play none none reverse'
                     }
                 }
             );
 
-            gsap.from('.project-card', {
+            gsap.from('.category-card', {
                 opacity: 0,
-                scale: 0.9,
-                filter: 'blur(4px)',
-                stagger: 0.15,
-                duration: 0.8,
-                force3D: true,
+                y: 50,
+                duration: 1,
+                stagger: 0.2,
                 scrollTrigger: {
                     trigger: gridRef.current,
                     start: 'top 75%',
-                    toggleActions: 'restart reverse restart reverse'
+                    toggleActions: 'play none none reverse'
                 }
             });
         }, sectionRef);
@@ -66,80 +55,62 @@ const Projects = () => {
     }, []);
 
     return (
-        <Box id="projects" ref={sectionRef} sx={{ py: { xs: 10, md: 15 } }}>
+        <Box id="projects" ref={sectionRef} sx={{ py: { xs: 10, md: 15 }, bgcolor: 'background.default' }}>
             <Container maxWidth="lg">
                 <Box ref={headerRef} sx={{ mb: 8, textAlign: 'center' }}>
                     <Typography variant="overline" color="primary" sx={{ fontWeight: 700 }}>
                         PORTFOLIO
                     </Typography>
                     <Typography variant="h2" sx={{ mt: 1 }}>
-                        Proyectos Destacados
+                        Mis Proyectos
                     </Typography>
                 </Box>
 
-                <Grid container spacing={4} ref={gridRef}>
-                    {projects.map((project, index) => (
-                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index} className="project-card hw-accel">
+                <Grid container spacing={6} ref={gridRef} justifyContent="center">
+                    {categories.map((category, index) => (
+                        <Grid size={{ xs: 12, md: 6 }} key={index} className="category-card">
                             <Card
+                                component={RouterLink}
+                                to={category.path}
                                 sx={{
+                                    textDecoration: 'none',
                                     bgcolor: 'background.paper',
-                                    overflow: 'hidden',
-                                    '&:hover .card-media': {
-                                        transform: 'scale(1.1)',
-                                    },
-                                    '&:hover .card-overlay': {
-                                        opacity: 1,
+                                    height: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    transition: 'all 0.3s ease-in-out',
+                                    willChange: 'transform, box-shadow',
+                                    '&:hover': {
+                                        transform: 'translateY(-10px)',
+                                        boxShadow: (theme) => `0 20px 40px ${theme.palette.primary.main}20`,
+                                        '& .category-image': {
+                                            transform: 'scale(1.05)',
+                                        }
                                     }
                                 }}
                             >
-                                <Box sx={{ position: 'relative', overflow: 'hidden' }}>
+                                <Box sx={{ overflow: 'hidden', height: 300 }}>
                                     <CardMedia
                                         component="img"
-                                        height="240"
-                                        image={project.image}
-                                        alt={project.title}
-                                        className="card-media"
-                                        sx={{ transition: 'transform 0.5s ease' }}
-                                    />
-                                    <Box
-                                        className="card-overlay"
-                                        sx={{
-                                            position: 'absolute',
-                                            top: 0,
-                                            left: 0,
-                                            right: 0,
-                                            bottom: 0,
-                                            bgcolor: 'rgba(15, 23, 42, 0.8)',
-                                            opacity: 0,
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            transition: 'opacity 0.3s ease',
+                                        image={category.image}
+                                        alt={category.title}
+                                        className="category-image"
+                                        sx={{ 
+                                            height: '100%',
+                                            transition: 'transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)'
                                         }}
-                                    >
-                                        <Stack direction="row" spacing={2}>
-                                            <Button variant="contained" size="small">Demo</Button>
-                                            <Button variant="outlined" size="small" sx={{ color: 'white', borderColor: 'white' }}>Repo</Button>
-                                        </Stack>
-                                    </Box>
+                                    />
                                 </Box>
-                                <CardContent>
-                                    <Typography variant="caption" color="primary" sx={{ fontWeight: 700 }}>
-                                        {project.category}
+                                <CardContent sx={{ p: 4, flexGrow: 1 }}>
+                                    <Typography variant="h4" gutterBottom sx={{ fontWeight: 800 }}>
+                                        {category.title}
                                     </Typography>
-                                    <Typography variant="h6" sx={{ fontWeight: 700, my: 1 }}>
-                                        {project.title}
+                                    <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+                                        {category.description}
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                                        {project.description}
-                                    </Typography>
-                                    <Box sx={{ display: 'flex', gap: 1 }}>
-                                        {project.tech.map(t => (
-                                            <Typography key={t} variant="caption" sx={{ bgcolor: 'rgba(255,255,255,0.05)', px: 1, py: 0.2, borderRadius: 1 }}>
-                                                {t}
-                                            </Typography>
-                                        ))}
-                                    </Box>
+                                    <Button variant="outlined" color="primary" size="large" fullWidth sx={{ mt: 'auto' }}>
+                                        Explorar
+                                    </Button>
                                 </CardContent>
                             </Card>
                         </Grid>

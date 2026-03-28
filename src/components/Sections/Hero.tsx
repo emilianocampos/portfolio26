@@ -9,7 +9,8 @@ import {
     FaCss3Alt,
     FaGithub,
     FaVideo,
-    FaSass
+    FaSass,
+    FaDownload
 } from 'react-icons/fa';
 import {
     SiGreensock,
@@ -48,53 +49,52 @@ const Hero = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Entrance animations
+            // Entrance animations - Play once
             const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
             tl.fromTo(imageRef.current,
-                { scale: 0.8, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.7)' }
+                { scale: 0.9, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 1, ease: 'back.out(1.2)' }
             )
                 .fromTo(titleRef.current,
-                    { y: 50, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 1 },
-                    '-=0.8'
-                )
-                .fromTo(subtitleRef.current,
                     { y: 30, opacity: 0 },
                     { y: 0, opacity: 1, duration: 0.8 },
                     '-=0.6'
                 )
-                .fromTo(ctaRef.current,
+                .fromTo(subtitleRef.current,
                     { y: 20, opacity: 0 },
                     { y: 0, opacity: 1, duration: 0.6 },
                     '-=0.4'
+                )
+                .fromTo(ctaRef.current,
+                    { y: 15, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.5 },
+                    '-=0.3'
                 );
 
-            // Floating background elements
+            // Floating background elements - Much subtler and slower
             bgElementsRef.current.forEach((el, i) => {
                 if (el) {
                     gsap.to(el, {
-                        y: 'random(-20, 20)',
-                        x: 'random(-20, 20)',
-                        rotation: 'random(-15, 15)',
-                        duration: 'random(3, 5)',
+                        y: 'random(-10, 10)',
+                        x: 'random(-10, 10)',
+                        duration: 'random(5, 8)', // Slower
                         repeat: -1,
                         yoyo: true,
                         ease: 'sine.inOut',
-                        delay: i * 0.2
+                        delay: i * 0.5
                     });
                 }
             });
 
-            // Carousel infinite scroll
+            // Carousel infinite scroll - Slower to reduce redraws
             if (carouselTrackRef.current) {
                 const track = carouselTrackRef.current;
                 const scrollWidth = track.scrollWidth / 2;
 
                 gsap.to(track, {
                     x: -scrollWidth,
-                    duration: 30,
+                    duration: 45, // Increased from 30
                     ease: 'none',
                     repeat: -1,
                     onRepeat: () => {
@@ -104,12 +104,12 @@ const Hero = () => {
 
                 // Carousel entrance
                 gsap.fromTo(carouselRef.current,
-                    { opacity: 0, y: 20 },
-                    { opacity: 1, y: 0, duration: 1, delay: 1.5 }
+                    { opacity: 0, y: 10 },
+                    { opacity: 1, y: 0, duration: 0.8, delay: 1 }
                 );
             }
 
-            // Text Loop Animation
+            // Text Loop Animation - Simple and effective
             if (loopTextRef.current) {
                 const phrases = [
                     { part1: 'Transformo ideas en', part2: 'experiencias.' },
@@ -129,16 +129,16 @@ const Hero = () => {
 
                 upTL.to(loopTextRef.current, {
                     opacity: 0,
-                    y: -20,
-                    duration: 0.5,
-                    delay: 2.5,
+                    y: -10,
+                    duration: 0.4,
+                    delay: 3,
                     onComplete: updateText
                 })
-                    .set(loopTextRef.current, { y: 20 })
+                    .set(loopTextRef.current, { y: 10 })
                     .to(loopTextRef.current, {
                         opacity: 1,
                         y: 0,
-                        duration: 0.5
+                        duration: 0.4
                     });
             }
         }, rootRef);
@@ -255,6 +255,25 @@ const Hero = () => {
                                     sx={{ px: 4, py: 1.5 }}
                                 >
                                     Ver mis proyectos
+                                </Button>
+                                <Button
+                                    variant="outlined"
+                                    size="large"
+                                    href="/emiliano_camposcv_2026.pdf"
+                                    download="Emiliano_Campos_CV.pdf"
+                                    startIcon={<FaDownload />}
+                                    sx={{ 
+                                        px: 4, 
+                                        py: 1.5, 
+                                        borderColor: 'rgba(255,255,255,0.2)', 
+                                        color: 'white',
+                                        '&:hover': {
+                                            borderColor: 'primary.main',
+                                            bgcolor: 'rgba(99, 102, 241, 0.1)'
+                                        }
+                                    }}
+                                >
+                                    Descargar CV
                                 </Button>
                                 <Button
                                     variant="outlined"

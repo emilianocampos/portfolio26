@@ -15,47 +15,51 @@ const About = () => {
         const ctx = gsap.context(() => {
             // Text reveal
             gsap.fromTo(textRef.current,
-                { opacity: 0, x: -50 },
+                { opacity: 0, x: -30 },
                 {
                     opacity: 1,
                     x: 0,
-                    duration: 1,
+                    duration: 0.8,
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: 'top 70%',
-                    }
+                        start: 'top 75%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    force3D: true
                 }
             );
 
             // Stats stagger reveal
             gsap.fromTo(statsRef.current,
-                { opacity: 0, y: 20 },
+                { opacity: 0, y: 15 },
                 {
                     opacity: 1,
                     y: 0,
-                    stagger: 0.2,
-                    duration: 0.8,
-                    delay: 0.5,
+                    stagger: 0.1,
+                    duration: 0.6,
+                    delay: 0.2,
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: 'top 70%',
-                    }
+                        start: 'top 75%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    force3D: true
                 }
             );
 
             // Graphic reveal
             gsap.fromTo(graphicRef.current,
-                { opacity: 0, scale: 0.8, rotate: -5 },
+                { opacity: 0, scale: 0.9, rotate: -2 },
                 {
                     opacity: 1,
                     scale: 1,
                     rotate: 0,
-                    duration: 1.2,
-                    ease: 'back.out(1.7)',
+                    duration: 1,
+                    ease: 'back.out(1.2)',
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: 'top 70%',
-                        toggleActions: 'restart reverse restart reverse'
+                        start: 'top 75%',
+                        toggleActions: 'play none none reverse'
                     },
                     force3D: true
                 }
@@ -89,10 +93,7 @@ const About = () => {
                             </Typography>
 
                             <Stack direction="row" spacing={6} sx={{ justifyContent: 'center', mt: 4 }}>
-                                <Box ref={(el: any) => el && (statsRef.current[0] = el)} className="hw-accel">
-                                    <Typography variant="h3" sx={{ fontWeight: 900, color: 'primary.main', mb: 0.5 }}>5+</Typography>
-                                    <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 700 }}>Proyectos</Typography>
-                                </Box>
+
                                 <Box ref={(el: any) => el && (statsRef.current[1] = el)} className="hw-accel">
                                     <Typography variant="h3" sx={{ fontWeight: 900, color: 'primary.main', mb: 0.5 }}>100%</Typography>
                                     <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 700 }}>Compromiso</Typography>

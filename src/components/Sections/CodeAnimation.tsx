@@ -14,33 +14,33 @@ const CodeAnimation = () => {
             linesRef.current.forEach((line, i) => {
                 if (!line) return;
 
-                // Random width animation
+                // Random width animation - slower and subtler
                 gsap.to(line, {
-                    width: `${Math.random() * 40 + 60}%`,
-                    duration: 1.5 + Math.random(),
+                    width: `${Math.random() * 30 + 70}%`, // Less variance
+                    duration: 3 + Math.random() * 2, // Doubled duration
                     repeat: -1,
                     yoyo: true,
                     ease: "sine.inOut",
-                    delay: i * 0.1
+                    delay: i * 0.2
                 });
 
-                // Opacity flicker
+                // Opacity flicker - much less frequent
                 gsap.to(line, {
-                    opacity: 0.3,
-                    duration: 0.2,
+                    opacity: 0.5, // Less drastic flicker
+                    duration: 0.8, // Slower flicker
                     repeat: -1,
                     yoyo: true,
                     ease: "none",
-                    delay: Math.random() * 2
+                    delay: Math.random() * 5 // Longer delay range
                 });
             });
 
-            // Window floating
+            // Window floating - subtler and smoother
             gsap.to(containerRef.current, {
-                y: -15,
-                rotationX: 5,
-                rotationY: -5,
-                duration: 4,
+                y: -8, // Reduced from 15
+                rotationX: 2, // Reduced from 5
+                rotationY: -2, // Reduced from 5
+                duration: 6, // Increased from 4
                 repeat: -1,
                 yoyo: true,
                 ease: "sine.inOut"
