@@ -15,10 +15,9 @@ const About = () => {
         const ctx = gsap.context(() => {
             // Text reveal
             gsap.fromTo(textRef.current,
-                { opacity: 0, x: -30 },
+                { opacity: 0 },
                 {
                     opacity: 1,
-                    x: 0,
                     duration: 0.8,
                     scrollTrigger: {
                         trigger: sectionRef.current,
@@ -86,7 +85,7 @@ const About = () => {
                                 Hola, soy <strong>Emiliano Campos</strong>. Ayudo a emprendedores y marcas a transformar su presencia online en una herramienta que realmente genera resultados.
                             </Typography>
                             <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, fontSize: '1.2rem', lineHeight: 1.7 }}>
-                                Mi formación técnica me dio las bases, pero trabajar con clientes reales —y actualmente formar parte de una empresa tecnológica del rubro IT— me enseñó algo clave: <strong>una página web no es un gasto, es una inversión cuando está bien pensada.</strong> Por eso creo sitios claros, atractivos y fáciles de usar, diseñados para captar la atención y guiar a las personas hacia el contacto o la compra.
+                                Mi formación técnica me dio las bases, pero trabajar con clientes reales —y formar parte de una empresa tecnológica del rubro IT— me enseñó algo clave: <strong>una página web no es un gasto, es una inversión cuando está bien pensada.</strong> Por eso creo sitios claros, atractivos y fáciles de usar, diseñados para captar la atención y guiar a las personas hacia el contacto o la compra.
                             </Typography>
                             <Typography variant="body1" sx={{ color: 'text.secondary', mb: 4, fontSize: '1.1rem', lineHeight: 1.7 }}>
                                 Combino diseño, contenido visual y desarrollo web para que tu negocio se vea profesional, transmita confianza y represente la calidad de lo que ofrecés desde el primer vistazo.
@@ -95,6 +94,7 @@ const About = () => {
                             <Stack direction="row" spacing={6} sx={{ justifyContent: 'center', mt: 4 }}>
 
                                 <Box ref={(el: any) => el && (statsRef.current[1] = el)} className="hw-accel">
+
                                     <Typography variant="h3" sx={{ fontWeight: 900, color: 'primary.main', mb: 0.5 }}>100%</Typography>
                                     <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 700 }}>Compromiso</Typography>
                                 </Box>

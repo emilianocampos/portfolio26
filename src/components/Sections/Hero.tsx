@@ -77,7 +77,6 @@ const Hero = () => {
                 if (el) {
                     gsap.to(el, {
                         y: 'random(-10, 10)',
-                        x: 'random(-10, 10)',
                         duration: 'random(5, 8)', // Slower
                         repeat: -1,
                         yoyo: true,
@@ -94,7 +93,7 @@ const Hero = () => {
 
                 gsap.to(track, {
                     x: -scrollWidth,
-                    duration: 45, // Increased from 30
+                    duration: 45,
                     ease: 'none',
                     repeat: -1,
                     onRepeat: () => {
@@ -259,7 +258,7 @@ const Hero = () => {
                                 <Button
                                     variant="outlined"
                                     size="large"
-                                    href="/emiliano_camposcv_2026.pdf"
+                                    href="/emi_campos_cv_2026.pdf"
                                     download="Emiliano_Campos_CV.pdf"
                                     startIcon={<FaDownload />}
                                     sx={{ 

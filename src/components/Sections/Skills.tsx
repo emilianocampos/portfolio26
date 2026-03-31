@@ -4,30 +4,24 @@ import gsap from 'gsap';
 import {
     Code as CodeIcon,
     Settings as SettingsIcon,
-    Storage as StorageIcon,
-    Brush as BrushIcon
+    Storage as StorageIcon
 } from '@mui/icons-material';
 
 const skillCategories = [
     {
         title: 'Frontend',
         icon: <CodeIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-        skills: ['HTML5', 'CSS3 / SASS', 'JavaScript (ES6+)', 'React', 'Redux'],
+        skills: ['React', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS', 'Material UI'],
     },
     {
-        title: 'UI / UX',
-        icon: <BrushIcon sx={{ fontSize: 40, color: 'secondary.main' }} />,
-        skills: ['Material UI', 'Diseño Responsive', 'Figma (Básico)', 'Accesibilidad'],
-    },
-    {
-        title: 'Backend & Herramientas',
+        title: 'Backend & Data',
         icon: <StorageIcon sx={{ fontSize: 40, color: '#10b981' }} />,
-        skills: ['Node.js', 'SQL', 'Git / GitHub', 'Firebase'],
+        skills: ['Node.js', 'SQL', 'Desarrollo e integración de APIs REST'],
     },
     {
-        title: 'Creativo',
+        title: 'Tools & Workflow',
         icon: <SettingsIcon sx={{ fontSize: 40, color: '#f59e0b' }} />,
-        skills: ['Photoshop', 'Edición de Video', 'Fotografía Digital'],
+        skills: ['Git & GitHub', 'AWS (básico)', 'SEO'],
     },
 ];
 
@@ -55,10 +49,9 @@ const Skills = () => {
             );
 
             gsap.fromTo(cardsRef.current,
-                { opacity: 0, x: 100 },
+                { opacity: 0 },
                 {
                     opacity: 1,
-                    x: 0,
                     stagger: 0.15,
                     duration: 1,
                     scrollTrigger: {
@@ -88,7 +81,7 @@ const Skills = () => {
 
                 <Grid container spacing={4}>
                     {skillCategories.map((category, index) => (
-                        <Grid size={{ xs: 12, sm: 6, md: 3 }} key={category.title}>
+                        <Grid size={{ xs: 12, sm: 12, md: 4 }} key={category.title}>
                             <Card
                                 ref={(el: any) => el && (cardsRef.current[index] = el)}
                                 className="hw-accel"

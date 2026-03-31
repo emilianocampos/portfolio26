@@ -92,7 +92,7 @@ const Navbar = () => {
                             ))}
                             <Button
                                 variant="outlined"
-                                href="/emiliano_camposcv_2026.pdf"
+                                href="/emi_campos_cv_2026.pdf"
                                 download="Emiliano_Campos_CV.pdf"
                                 startIcon={<DownloadIcon />}
                                 size="small"
@@ -180,7 +180,7 @@ const Navbar = () => {
                         variant="outlined"
                         fullWidth
                         size="large"
-                        href="/emiliano_camposcv_2026.pdf"
+                        href="/emi_campos_cv_2026.pdf"
                         download="Emiliano_Campos_CV.pdf"
                         startIcon={<DownloadIcon />}
                         sx={{ mt: 2, borderColor: 'rgba(255,255,255,0.3)', color: 'white' }}

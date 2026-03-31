@@ -39,7 +39,6 @@ const CodeAnimation = () => {
             gsap.to(containerRef.current, {
                 y: -8, // Reduced from 15
                 rotationX: 2, // Reduced from 5
-                rotationY: -2, // Reduced from 5
                 duration: 6, // Increased from 4
                 repeat: -1,
                 yoyo: true,

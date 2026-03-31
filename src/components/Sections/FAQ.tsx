@@ -287,10 +287,9 @@ const FAQ = () => {
             const items = gsap.utils.toArray('.faq-item');
             if (items.length > 0) {
                 gsap.fromTo(items, 
-                    { opacity: 0, x: -20 },
+                    { opacity: 0 },
                     {
                         opacity: 1,
-                        x: 0,
                         duration: 0.8,
                         stagger: 0.1,
                         scrollTrigger: {
@@ -332,8 +331,7 @@ const FAQ = () => {
                                 transition: 'all 0.3s ease',
                                 willChange: 'transform, border-color',
                                 '&:hover': {
-                                    borderColor: 'primary.main',
-                                    transform: 'translateX(5px)'
+                                    borderColor: 'primary.main'
                                 }
                             }}
                         >
