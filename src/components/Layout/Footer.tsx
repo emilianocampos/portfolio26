@@ -43,24 +43,24 @@ const Footer = () => {
                     </Box>
 
                     <Stack direction="row" spacing={2}>
-                        <IconButton 
+                        <IconButton
                             component="a"
                             href="https://www.linkedin.com/in/emiliano-campos/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            ref={(el: any) => el && (iconsRef.current[0] = el)} 
-                            color="inherit" 
+                            ref={(el: any) => el && (iconsRef.current[0] = el)}
+                            color="inherit"
                             size="small"
                         >
                             <LinkedIn />
                         </IconButton>
-                        <IconButton 
+                        <IconButton
                             component="a"
                             href="https://github.com/emilianocampos"
                             target="_blank"
                             rel="noopener noreferrer"
-                            ref={(el: any) => el && (iconsRef.current[1] = el)} 
-                            color="inherit" 
+                            ref={(el: any) => el && (iconsRef.current[1] = el)}
+                            color="inherit"
                             size="small"
                         >
                             <GitHub />

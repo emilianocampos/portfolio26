@@ -1,10 +1,10 @@
 import { useRef, useLayoutEffect } from 'react';
-import { 
-    Box, 
-    Container, 
-    Typography, 
-    Accordion, 
-    AccordionSummary, 
+import {
+    Box,
+    Container,
+    Typography,
+    Accordion,
+    AccordionSummary,
     AccordionDetails,
     List,
     ListItem,
@@ -86,13 +86,10 @@ const faqs = [
             <>
                 <Typography variant="body1" sx={{ mb: 1 }}>Depende del tipo de web, pero en general:</Typography>
                 <List>
+
                     <ListItem disablePadding>
                         <ListItemIcon sx={{ minWidth: 36 }}><CheckCircleIcon color="primary" fontSize="small" /></ListItemIcon>
-                        <ListItemText primary="Landing simple: 3 a 7 días" />
-                    </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemIcon sx={{ minWidth: 36 }}><CheckCircleIcon color="primary" fontSize="small" /></ListItemIcon>
-                        <ListItemText primary="Web completa: 7 a 15 días" />
+                        <ListItemText primary="Web completa:  3 a 7 días" />
                     </ListItem>
                 </List>
             </>
@@ -286,7 +283,7 @@ const FAQ = () => {
 
             const items = gsap.utils.toArray('.faq-item');
             if (items.length > 0) {
-                gsap.fromTo(items, 
+                gsap.fromTo(items,
                     { opacity: 0 },
                     {
                         opacity: 1,
@@ -319,10 +316,10 @@ const FAQ = () => {
 
                 <Box>
                     {faqs.map((faq, index) => (
-                        <Accordion 
-                            key={index} 
+                        <Accordion
+                            key={index}
                             className="faq-item"
-                            sx={{ 
+                            sx={{
                                 bgcolor: 'background.paper',
                                 mb: 2,
                                 borderRadius: '12px !important',
