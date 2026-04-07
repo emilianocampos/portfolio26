@@ -89,6 +89,7 @@ const Contact = () => {
                     <Button
                         variant="contained"
                         size="large"
+                        href="#contact-form"
                         sx={{
                             bgcolor: 'white',
                             color: 'primary.main',
@@ -108,28 +109,31 @@ const Contact = () => {
 
             {/* Form Part */}
             <Container maxWidth="md">
-                <Typography ref={formTitleRef} variant="h3" sx={{ textAlign: 'center', mb: 6 }}>Enviame un mensaje</Typography>
+                <Typography id="contact-form" ref={formTitleRef} variant="h3" sx={{ textAlign: 'center', mb: 6 }}>Enviame un mensaje</Typography>
                 <Paper ref={formRef} sx={{ p: { xs: 3, md: 6 }, borderRadius: 4 }}>
-                    <Stack spacing={3}>
-                        <Grid container spacing={3}>
-                            <Grid size={{ xs: 12, sm: 6 }}>
-                                <TextField fullWidth label="Nombre" variant="outlined" placeholder="Tu nombre" />
+                    <form action="https://formspree.io/f/mgopzwja" method="POST">
+                        <Stack spacing={3}>
+                            <Grid container spacing={3}>
+                                <Grid size={{ xs: 12, sm: 6 }}>
+                                    <TextField name="name" required fullWidth label="Nombre" variant="outlined" placeholder="Tu nombre" />
+                                </Grid>
+                                <Grid size={{ xs: 12, sm: 6 }}>
+                                    <TextField name="email" type="email" required fullWidth label="Email" variant="outlined" placeholder="tu@email.com" />
+                                </Grid>
                             </Grid>
-                            <Grid size={{ xs: 12, sm: 6 }}>
-                                <TextField fullWidth label="Email" variant="outlined" placeholder="tu@email.com" />
-                            </Grid>
-                        </Grid>
-                        <TextField fullWidth label="Asunto" variant="outlined" placeholder="¿En qué puedo ayudarte?" />
-                        <TextField fullWidth multiline rows={4} label="Mensaje" variant="outlined" placeholder="Escribe tu mensaje aquí..." />
-                        <Button
-                            variant="contained"
-                            fullWidth
-                            size="large"
-                            sx={{ py: 2, mt: 2 }}
-                        >
-                            Enviar Mensaje
-                        </Button>
-                    </Stack>
+                            <TextField name="subject" fullWidth label="Asunto" variant="outlined" placeholder="¿En qué puedo ayudarte?" />
+                            <TextField name="message" required fullWidth multiline rows={4} label="Mensaje" variant="outlined" placeholder="Escribe tu mensaje aquí..." />
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                fullWidth
+                                size="large"
+                                sx={{ py: 2, mt: 2 }}
+                            >
+                                Enviar Mensaje
+                            </Button>
+                        </Stack>
+                    </form>
                 </Paper>
             </Container>
         </Box>

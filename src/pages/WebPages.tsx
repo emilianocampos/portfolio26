@@ -3,38 +3,64 @@ import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Button,
 import { Link as RouterLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SEO from '../components/Common/SEO';
+import geearthlogicImg from '../assets/Laptop mostrando Gearthlogic en oficina moderna.png';
+import cukinailsImg from '../assets/Laptop con sitio web de Cuki Nails.png';
+import estudioJuridicoImg from '../assets/Portátil de la firma con Lady Justicia.png';
+import arquitecturaImg from '../assets/Tecnología y diseño arquitectónico en armonía.png';
+import galenoImg from '../assets/Portátil mostrando el sitio de Galenos.png';
+import psicologaImg from '../assets/Sitio web de terapia online de Dr. Alvarez.png';
+import sermariImg from '../assets/Herramientas y tecnología en construcción.png';
+import tattooImg from '../assets/Mockup de laptop en estudio de tatuajes (1).png';
 import gsap from 'gsap';
 
 const projects = [
   {
-    title: 'Cuky Nails',
+    title: 'Gearthlogic',
+    url: 'https://www.gearthlogic.com',
+    image: geearthlogicImg,
+    description: 'Página web corporativa y tecnológica de la empresa donde trabajé desarrollando soluciones.',
+  },
+  {
+    title: 'Galenos Consultorio',
+    url: 'https://galenosconsultorio.vercel.app/',
+    image: galenoImg,
+    description: 'Sitio web moderno y profesional para consultorio de kinesiología y fisioterapia.',
+  },
+  {
+    title: 'Cukinails',
     url: 'https://cukynails.vercel.app',
-    image: 'https://images.unsplash.com/photo-1632345031435-87bd7c68b3d5?q=80&w=800&auto=format&fit=crop',
+    image: cukinailsImg,
     description: 'Sitio web elegante para estudio de manicuría, enfocado en la estética y la reserva de turnos.',
   },
   {
     title: 'Estudio Jurídico',
     url: 'https://abogado-gamma.vercel.app/',
-    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop',
+    image: estudioJuridicoImg,
     description: 'Plataforma profesional para servicios legales con un diseño sobrio y confiable.',
   },
   {
     title: 'Psicóloga Online',
     url: 'https://psicologa-one.vercel.app/',
-    image: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=800&auto=format&fit=crop',
+    image: psicologaImg,
     description: 'Espacio digital dedicado a la salud mental, transmitiendo calma y profesionalismo.',
   },
   {
     title: 'Anibal Tattoo Art',
     url: 'https://anibaltattooart.netlify.app/',
-    image: 'https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?q=80&w=800&auto=format&fit=crop',
+    image: tattooImg,
     description: 'Portfolio artístico para estudio de tatuajes, resaltando trabajos detallados y galerías.',
   },
   {
     title: 'Vanguardia Arquitectura',
     url: 'https://vanguardia-five.vercel.app/',
-    image: 'https://images.unsplash.com/photo-1503387762-592dea58ef21?q=80&w=800&auto=format&fit=crop',
+    image: arquitecturaImg,
     description: 'Sitio corporativo para estudio de arquitectura con enfoque en diseño moderno y funcional.',
+  },
+  {
+    title: 'SERMARI constructora',
+    url: 'https://sermari.netlify.app/',
+    image: sermariImg,
+    description: 'Sitio web profesional y moderno para empresa constructora, mostrando servicios y proyectos.',
   }
 ];
 

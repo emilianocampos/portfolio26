@@ -10,7 +10,7 @@ import About from './components/Sections/About';
 import Skills from './components/Sections/Skills';
 import Experience from './components/Sections/Experience';
 import Projects from './components/Sections/Projects';
-import Education from './components/Sections/Education';
+
 import Contact from './components/Sections/Contact';
 import Footer from './components/Layout/Footer';
 import Loader from './components/Common/Loader';
@@ -34,7 +34,7 @@ const Home = () => (
     <Experience />
     <Projects />
     <FAQ />
-    <Education />
+
     <Contact />
   </>
 );
@@ -60,7 +60,7 @@ function App() {
         display: 'flex',
         flexDirection: 'column'
       }}>
-        <Navbar />
+        {pathname === '/' && <Navbar />}
         <Box component="main" sx={{ flexGrow: 1 }}>
           <Routes>
             <Route path="/" element={<Home />} />

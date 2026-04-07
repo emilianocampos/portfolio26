@@ -68,9 +68,9 @@ const experiences: Omit<ExperienceItemProps, 'index'>[] = [
 
 const ExperienceCard = ({ role, company, period, highlights, extra, index }: ExperienceItemProps) => {
     const [expanded, setExpanded] = useState(false);
-    
-    // A simplified heuristic for "more than 4 lines"
-    // Usually 4 lines of highlights/text is around the limit.
+
+    //  A simplified heuristic for "more than 4 lines"
+    //  Usually 4 lines of highlights/text is around the limit.
     const needsReadMore = highlights.length > 3 || (extra && extra.items.length > 0);
 
     return (
@@ -115,7 +115,7 @@ const ExperienceCard = ({ role, company, period, highlights, extra, index }: Exp
                                     {point}
                                 </Typography>
                             ))}
-                            
+
                             {extra && (
                                 <Box sx={{ mt: 2 }}>
                                     <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1, color: 'text.primary' }}>

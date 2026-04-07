@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton, Drawer
 import MenuIcon from '@mui/icons-material/Menu';
 import DownloadIcon from '@mui/icons-material/Download';
 import { useTheme } from '@mui/material/styles';
+import { FaWhatsapp } from 'react-icons/fa';
 import pcIcon from '../../assets/pc.svg';
 
 const navItems = [
@@ -10,6 +11,7 @@ const navItems = [
     { label: 'Skills', id: 'skills' },
     { label: 'Experiencia', id: 'experience' },
     { label: 'Proyectos', id: 'projects' },
+    { label: 'Preguntas', id: 'faq' },
     { label: 'Contacto', id: 'contact' },
 ];
 
@@ -110,10 +112,19 @@ const Navbar = () => {
                             </Button>
                             <Button
                                 variant="contained"
-                                onClick={() => scrollToSection('contact')}
-                                sx={{ ml: 1 }}
+                                href="https://wa.me/542804198600"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                startIcon={<FaWhatsapp />}
+                                sx={{ 
+                                    ml: 1,
+                                    bgcolor: '#25D366',
+                                    '&:hover': {
+                                        bgcolor: '#128C7E'
+                                    }
+                                }}
                             >
-                                Hablemos
+                                WhatsApp
                             </Button>
                         </Box>
 
@@ -191,10 +202,19 @@ const Navbar = () => {
                         variant="contained"
                         fullWidth
                         size="large"
-                        onClick={() => scrollToSection('contact')}
-                        sx={{ mt: 2 }}
+                        href="https://wa.me/542804198600"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        startIcon={<FaWhatsapp />}
+                        sx={{ 
+                            mt: 2,
+                            bgcolor: '#25D366',
+                            '&:hover': {
+                                bgcolor: '#128C7E'
+                            }
+                        }}
                     >
-                        Hablemos
+                        WhatsApp
                     </Button>
                 </Box>
             </Drawer>

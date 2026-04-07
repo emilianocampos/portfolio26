@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Box, Container, Typography, Stack, IconButton } from '@mui/material';
-import { GitHub, LinkedIn, Twitter, Instagram } from '@mui/icons-material';
+import { GitHub, LinkedIn } from '@mui/icons-material';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -44,6 +44,10 @@ const Footer = () => {
 
                     <Stack direction="row" spacing={2}>
                         <IconButton 
+                            component="a"
+                            href="https://www.linkedin.com/in/emiliano-campos/"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             ref={(el: any) => el && (iconsRef.current[0] = el)} 
                             color="inherit" 
                             size="small"
@@ -51,25 +55,15 @@ const Footer = () => {
                             <LinkedIn />
                         </IconButton>
                         <IconButton 
+                            component="a"
+                            href="https://github.com/emilianocampos"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             ref={(el: any) => el && (iconsRef.current[1] = el)} 
                             color="inherit" 
                             size="small"
                         >
                             <GitHub />
-                        </IconButton>
-                        <IconButton 
-                            ref={(el: any) => el && (iconsRef.current[2] = el)} 
-                            color="inherit" 
-                            size="small"
-                        >
-                            <Twitter />
-                        </IconButton>
-                        <IconButton 
-                            ref={(el: any) => el && (iconsRef.current[3] = el)} 
-                            color="inherit" 
-                            size="small"
-                        >
-                            <Instagram />
                         </IconButton>
                     </Stack>
 

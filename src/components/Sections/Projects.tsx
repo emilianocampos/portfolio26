@@ -2,18 +2,20 @@ import { useRef, useEffect } from 'react';
 import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Button } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import gsap from 'gsap';
+import tattooImg from '../../assets/Mockup de laptop en estudio de tatuajes (1).png';
+import imcImg from '../../assets/Calculadora IMC en laptop moderna.png';
 
 const categories = [
     {
         title: 'Páginas Webs',
         description: 'Sitios web institucionales, landing pages y portfolios optimizados para SEO y conversión.',
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+        image: tattooImg,
         path: '/proyectos/paginas-webs',
     },
     {
         title: 'Aplicaciones Webs',
         description: 'Sistemas complejos, dashboards y plataformas interactivas con lógica de negocio avanzada.',
-        image: 'https://images.unsplash.com/photo-1551288049-041440ef415b?auto=format&fit=crop&q=80&w=800',
+        image: imcImg,
         path: '/proyectos/aplicaciones-webs',
     }
 ];
@@ -95,7 +97,7 @@ const Projects = () => {
                                         image={category.image}
                                         alt={category.title}
                                         className="category-image"
-                                        sx={{ 
+                                        sx={{
                                             height: '100%',
                                             transition: 'transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)'
                                         }}
