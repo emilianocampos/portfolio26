@@ -1,73 +1,10 @@
-import { useRef, useEffect } from 'react';
 import { Box, Container, Typography, Grid, TextField, Button, Stack, Paper } from '@mui/material';
-import gsap from 'gsap';
-
 const Contact = () => {
-    const sectionRef = useRef(null);
-    const ctaRef = useRef(null);
-    const formTitleRef = useRef(null);
-    const formRef = useRef(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            // CTA Animation
-            gsap.fromTo(ctaRef.current,
-                { opacity: 0, scale: 0.95 },
-                {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: ctaRef.current,
-                        start: 'top 90%',
-                        toggleActions: 'play none none reverse'
-                    },
-                    force3D: true
-                }
-            );
-
-            // Form Title Animation
-            gsap.fromTo(formTitleRef.current,
-                { opacity: 0, y: 30 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    scrollTrigger: {
-                        trigger: formTitleRef.current,
-                        start: 'top 95%',
-                        toggleActions: 'play none none reverse'
-                    },
-                    force3D: true
-                }
-            );
-
-            // Form Animation
-            gsap.fromTo(formRef.current,
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: formRef.current,
-                        start: 'top 90%',
-                        toggleActions: 'play none none reverse'
-                    },
-                    force3D: true
-                }
-            );
-        }, sectionRef);
-
-        return () => ctx.revert();
-    }, []);
-
     return (
-        <Box id="contact" ref={sectionRef} sx={{ py: { xs: 10, md: 15 }, position: 'relative' }}>
+        <Box id="contact" sx={{ py: { xs: 10, md: 15 }, position: 'relative' }}>
             {/* CTA Part */}
             <Container maxWidth="lg" sx={{ mb: 10 }}>
                 <Box
-                    ref={ctaRef}
                     className="hw-accel"
                     sx={{
                         textAlign: 'center',
@@ -109,8 +46,8 @@ const Contact = () => {
 
             {/* Form Part */}
             <Container maxWidth="md">
-                <Typography id="contact-form" ref={formTitleRef} variant="h3" sx={{ textAlign: 'center', mb: 6 }}>Enviame un mensaje</Typography>
-                <Paper ref={formRef} sx={{ p: { xs: 3, md: 6 }, borderRadius: 4 }}>
+                <Typography id="contact-form" variant="h3" sx={{ textAlign: 'center', mb: 6 }}>Enviame un mensaje</Typography>
+                <Paper sx={{ p: { xs: 3, md: 6 }, borderRadius: 4 }}>
                     <form action="https://formspree.io/f/mgopzwja" method="POST">
                         <Stack spacing={3}>
                             <Grid container spacing={3}>

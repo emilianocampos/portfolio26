@@ -1,4 +1,3 @@
-import { useRef, useLayoutEffect } from 'react';
 import {
     Box,
     Container,
@@ -13,10 +12,6 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
     {
@@ -258,54 +253,10 @@ const faqs = [
 ];
 
 const FAQ = () => {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const headerRef = useRef<HTMLDivElement>(null);
-
-    useLayoutEffect(() => {
-        if (!sectionRef.current) return;
-
-        const ctx = gsap.context(() => {
-            if (headerRef.current) {
-                gsap.fromTo(headerRef.current,
-                    { opacity: 0, y: 30 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 1,
-                        scrollTrigger: {
-                            trigger: sectionRef.current,
-                            start: 'top 85%',
-                            toggleActions: 'play none none reverse'
-                        }
-                    }
-                );
-            }
-
-            const items = gsap.utils.toArray('.faq-item');
-            if (items.length > 0) {
-                gsap.fromTo(items,
-                    { opacity: 0 },
-                    {
-                        opacity: 1,
-                        duration: 0.8,
-                        stagger: 0.1,
-                        scrollTrigger: {
-                            trigger: sectionRef.current,
-                            start: 'top 75%',
-                            toggleActions: 'play none none reverse'
-                        }
-                    }
-                );
-            }
-        }, sectionRef);
-
-        return () => ctx.revert();
-    }, []);
-
     return (
-        <Box id="faq" ref={sectionRef} sx={{ py: { xs: 10, md: 15 }, bgcolor: 'background.default' }}>
+        <Box id="faq" sx={{ py: { xs: 10, md: 15 }, bgcolor: 'background.default' }}>
             <Container maxWidth="md">
-                <Box ref={headerRef} sx={{ mb: 8, textAlign: 'center' }}>
+                <Box sx={{ mb: 8, textAlign: 'center' }}>
                     <Typography variant="overline" color="primary" sx={{ fontWeight: 700 }}>
                         RESPUESTAS
                     </Typography>

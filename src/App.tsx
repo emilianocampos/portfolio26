@@ -23,8 +23,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => (
   <>
-    <SEO 
-      title="Inicio" 
+    <SEO
+      title="Inicio"
       description="Portfolio profesional de desarrollo web y aplicaciones. Especialista en React, TypeScript y experiencias interactivas."
       keywords="desarrollo web, react, typescript, portfolio, frontend, aplicaciones web"
     />

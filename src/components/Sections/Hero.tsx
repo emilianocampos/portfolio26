@@ -261,10 +261,10 @@ const Hero = () => {
                                     href="/emi_campos_cv_2026.pdf"
                                     download="Emiliano_Campos_CV.pdf"
                                     startIcon={<FaDownload />}
-                                    sx={{ 
-                                        px: 4, 
-                                        py: 1.5, 
-                                        borderColor: 'rgba(255,255,255,0.2)', 
+                                    sx={{
+                                        px: 4,
+                                        py: 1.5,
+                                        borderColor: 'rgba(255,255,255,0.2)',
                                         color: 'white',
                                         '&:hover': {
                                             borderColor: 'primary.main',

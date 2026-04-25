@@ -82,17 +82,17 @@ const WebPages = () => {
 
   return (
     <Box sx={{ py: { xs: 6, md: 10 }, minHeight: '100vh', bgcolor: 'background.default' }}>
-      <SEO 
-        title="Páginas Webs" 
+      <SEO
+        title="Páginas Webs"
         description="Explora mis proyectos de diseño y desarrollo de páginas web personalizadas."
       />
       <Container maxWidth="lg" ref={containerRef}>
         <Box sx={{ mb: 4, display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Button 
-            component={RouterLink} 
-            to="/" 
+          <Button
+            component={RouterLink}
+            to="/"
             startIcon={<ArrowBackIcon />}
-            sx={{ 
+            sx={{
               color: 'text.primary',
               '&:hover': { bgcolor: 'rgba(255,255,255,0.05)' }
             }}
@@ -108,10 +108,10 @@ const WebPages = () => {
         <Grid container spacing={4} justifyContent="center">
           {projects.map((project, index) => (
             <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index} className="project-card">
-              <Card sx={{ 
-                height: '100%', 
-                display: 'flex', 
-                flexDirection: 'column', 
+              <Card sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
                 bgcolor: 'background.paper',
                 borderRadius: 4,
                 overflow: 'hidden',
@@ -142,11 +142,11 @@ const WebPages = () => {
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 3, lineBreak: 'anywhere' }}>
                     {project.description}
                   </Typography>
-                  <Button 
-                    component={Link} 
-                    href={project.url} 
-                    target="_blank" 
-                    variant="outlined" 
+                  <Button
+                    component={Link}
+                    href={project.url}
+                    target="_blank"
+                    variant="outlined"
                     fullWidth
                     sx={{ borderRadius: 2, py: 1 }}
                   >

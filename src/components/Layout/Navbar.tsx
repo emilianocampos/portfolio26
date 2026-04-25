@@ -98,8 +98,8 @@ const Navbar = () => {
                                 download="Emiliano_Campos_CV.pdf"
                                 startIcon={<DownloadIcon />}
                                 size="small"
-                                sx={{ 
-                                    ml: 1, 
+                                sx={{
+                                    ml: 1,
                                     borderColor: 'rgba(255,255,255,0.3)',
                                     color: 'white',
                                     '&:hover': {
@@ -116,7 +116,7 @@ const Navbar = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 startIcon={<FaWhatsapp />}
-                                sx={{ 
+                                sx={{
                                     ml: 1,
                                     bgcolor: '#25D366',
                                     '&:hover': {
@@ -206,7 +206,7 @@ const Navbar = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         startIcon={<FaWhatsapp />}
-                        sx={{ 
+                        sx={{
                             mt: 2,
                             bgcolor: '#25D366',
                             '&:hover': {
