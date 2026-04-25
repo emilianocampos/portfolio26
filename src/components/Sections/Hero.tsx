@@ -72,20 +72,6 @@ const Hero = () => {
                     '-=0.3'
                 );
 
-            // Floating background elements - Much subtler and slower
-            bgElementsRef.current.forEach((el, i) => {
-                if (el) {
-                    gsap.to(el, {
-                        y: 'random(-10, 10)',
-                        duration: 'random(5, 8)', // Slower
-                        repeat: -1,
-                        yoyo: true,
-                        ease: 'sine.inOut',
-                        delay: i * 0.5
-                    });
-                }
-            });
-
             // Carousel infinite scroll - Slower to reduce redraws
             if (carouselTrackRef.current) {
                 const track = carouselTrackRef.current;
@@ -106,39 +92,6 @@ const Hero = () => {
                     { opacity: 0, y: 10 },
                     { opacity: 1, y: 0, duration: 0.8, delay: 1 }
                 );
-            }
-
-            // Text Loop Animation - Simple and effective
-            if (loopTextRef.current) {
-                const phrases = [
-                    { part1: 'Transformo ideas en', part2: 'experiencias.' },
-                    { part1: 'Diseño pensado', part2: 'para vender.' }
-                ];
-                let currentIndex = 0;
-                const part1El = loopTextRef.current.querySelector('.part1');
-                const part2El = loopTextRef.current.querySelector('.part2');
-
-                const upTL = gsap.timeline({ repeat: -1 });
-
-                const updateText = () => {
-                    currentIndex = (currentIndex + 1) % phrases.length;
-                    if (part1El) part1El.textContent = phrases[currentIndex].part1;
-                    if (part2El) part2El.textContent = phrases[currentIndex].part2;
-                };
-
-                upTL.to(loopTextRef.current, {
-                    opacity: 0,
-                    y: -10,
-                    duration: 0.4,
-                    delay: 3,
-                    onComplete: updateText
-                })
-                    .set(loopTextRef.current, { y: 10 })
-                    .to(loopTextRef.current, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.4
-                    });
             }
         }, rootRef);
 
@@ -162,7 +115,6 @@ const Hero = () => {
         >
             {/* Background Orbs */}
             <Box
-                ref={(el: any) => el && (bgElementsRef.current[0] = el)}
                 sx={{
                     position: 'absolute',
                     top: '20%',
@@ -299,7 +251,6 @@ const Hero = () => {
                         >
                             {/* Background Glow */}
                             <Box
-                                ref={(el: any) => el && (bgElementsRef.current[1] = el)}
                                 sx={{
                                     position: 'absolute',
                                     top: '50%',

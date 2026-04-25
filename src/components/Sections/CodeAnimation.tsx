@@ -1,53 +1,6 @@
-import { useRef, useEffect } from 'react';
 import { Box } from '@mui/material';
-import gsap from 'gsap';
 
 const CodeAnimation = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const linesRef = useRef<HTMLDivElement[]>([]);
-
-    useEffect(() => {
-        if (!containerRef.current) return;
-
-        const ctx = gsap.context(() => {
-            // Animate lines
-            linesRef.current.forEach((line, i) => {
-                if (!line) return;
-
-                // Random width animation - slower and subtler
-                gsap.to(line, {
-                    width: `${Math.random() * 30 + 70}%`, // Less variance
-                    duration: 3 + Math.random() * 2, // Doubled duration
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut",
-                    delay: i * 0.2
-                });
-
-                // Opacity flicker - much less frequent
-                gsap.to(line, {
-                    opacity: 0.5, // Less drastic flicker
-                    duration: 0.8, // Slower flicker
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "none",
-                    delay: Math.random() * 5 // Longer delay range
-                });
-            });
-
-            // Window floating - subtler and smoother
-            gsap.to(containerRef.current, {
-                y: -8, // Reduced from 15
-                rotationX: 2, // Reduced from 5
-                duration: 6, // Increased from 4
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut"
-            });
-        }, containerRef);
-
-        return () => ctx.revert();
-    }, []);
 
     const codeLines = Array.from({ length: 12 }, (_, i) => ({
         id: i,
@@ -57,7 +10,7 @@ const CodeAnimation = () => {
 
     return (
         <Box
-            ref={containerRef}
+
             sx={{
                 width: '100%',
                 height: '350px',
@@ -84,7 +37,6 @@ const CodeAnimation = () => {
                 {codeLines.map((line, i) => (
                     <Box
                         key={line.id}
-                        ref={(el: any) => el && (linesRef.current[i] = el)}
                         sx={{
                             height: '6px',
                             width: '40%',
