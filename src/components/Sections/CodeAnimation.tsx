@@ -34,7 +34,7 @@ const CodeAnimation = () => {
 
             {/* Code Lines Container */}
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {codeLines.map((line, i) => (
+                {codeLines.map((line) => (
                     <Box
                         key={line.id}
                         sx={{

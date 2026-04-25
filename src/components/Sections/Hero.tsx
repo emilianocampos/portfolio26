@@ -42,7 +42,6 @@ const Hero = () => {
     const subtitleRef = useRef(null);
     const ctaRef = useRef(null);
     const imageRef = useRef(null);
-    const bgElementsRef = useRef<HTMLDivElement[]>([]);
     const carouselRef = useRef(null);
     const carouselTrackRef = useRef<HTMLDivElement>(null);
     const loopTextRef = useRef<HTMLDivElement>(null);
